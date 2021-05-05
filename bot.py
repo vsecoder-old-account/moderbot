@@ -218,7 +218,7 @@ async def newuser(message: types.Message):
 				'\n<b> · </b>Нельзя рекламировать услуги, товары, складчины, давать ссылки на конкурентные ресурсы.'
 				'\n<b> · </b>Если вы хотите написать в чат, старайтесь уместить свою мысль в одно сообщение — никто не любит флуд.'
 				'\n<b> · </b>Голосовые сообщения теперь разрешены, я их переведу в текст.', parse_mode='html')
-	except BaseException as e:
+	except Exception as e:
 		await bot.send_message(
 			message.chat.id, '🙋Приветствую вас в чате '
 			', я <b>бот</b>, и вот <u>правила</u> чата: \n'
@@ -244,7 +244,7 @@ async def photo_check(message: types.Message):
 				await bot.delete_message(message.chat.id, message.message_id)
 				photoid = message.photo[-1].file_id
 				await bot.send_photo(message.chat.id, photoid, caption=str(censor))
-	except BaseException as e:
+	except Exception as e:
 		await bot.send_message(1218845111, 'В системе ошибка...\n<code>' + str(e) + '</code>', parse_mode='html')
 		await bot.send_message(message.chat.id, 'Упс, ошибка...')
 
@@ -339,7 +339,7 @@ async def check(message: types.Message):
 				users += 1
 				session.add(user)
 				session.commit()
-	except BaseException as e:
+	except Exception as e:
 		await bot.send_message(1218845111, 'В системе ошибка...\n<code>' + str(e) + '</code>', parse_mode='html')
 		await bot.send_message(message.chat.id, 'Упс, ошибка...')
 
@@ -367,7 +367,7 @@ async def file_handler(message: types.Message):
 		else:
 			await bot.send_message(message.chat.id, response_file_scan.json()['verbose_msg'])
 		filescan += 1
-	except BaseException as e:
+	except Exception as e:
 		await bot.send_message(1218845111, 'В системе ошибка...\n<code>' + str(e) + '</code>', parse_mode='html')
 		await bot.send_message(message.chat.id, '🧩Файл слишком большой, не получается проверить на вирусы')
 
@@ -375,7 +375,7 @@ async def file_handler(message: types.Message):
 async def repeat_all_message(message):
 	try:
 		os.remove("dist/voice.wav")
-	except BaseException as e:
+	except Exception as e:
 		pass
 
 	await bot.send_chat_action(message.chat.id, 'typing')
@@ -412,7 +412,7 @@ async def repeat_all_message(message):
 		await message.reply('🗣 ' + message.from_user.first_name + '\n' + str(text))
 	try:
 		os.remove("dist/voice.wav")
-	except BaseException as e:
+	except Exception as e:
 		print(e)
 	finally:
 		pass
