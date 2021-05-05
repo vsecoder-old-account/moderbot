@@ -80,7 +80,7 @@ async def send_welcome(message: types.Message):
 		if all.id == iduser:
 			T = False
 
-	if T == True:
+	if T:
 		if message.from_user.username:
 			session = db_session.create_session()
 			name = message.from_user.first_name
@@ -310,7 +310,7 @@ async def check(message: types.Message):
 			if all.id == iduser:
 				T = False
 
-		if T == True:
+		if T:
 			if message.from_user.username:
 				session = db_session.create_session()
 				name = message.from_user.first_name
