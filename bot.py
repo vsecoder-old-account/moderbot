@@ -123,7 +123,6 @@ async def send_help(message: types.Message):
 @dp.message_handler(commands=['info', 'me'])
 async def info(message: types.Message):
 	await bot.send_chat_action(message.chat.id, 'typing')
-	time.sleep(1)
 	await bot.send_message(message.chat.id, 'Ну раз спросил, то в мои возможности входят несколько функций, '
                         'я обрабатываю сообщения на маты, при необходимости ставлю цензуру: \n'
                         '<b>мат => ▓▓▓</b>\n'
@@ -146,7 +145,6 @@ async def neword(message: types.Message):
 @dp.message_handler(commands=['stat'])
 async def statistic(message: types.Message):
 	await bot.send_chat_action(message.chat.id, 'typing')
-	time.sleep(1)
 	await bot.send_message(
 		message.chat.id, '<b>📈Всего слов обработанно:</b> <code>' + str(allwords) +
 		'</code>\n<b>📉Слов с матами:</b> <code>' + str(matwords) +
@@ -233,7 +231,6 @@ async def newuser(message: types.Message):
 @dp.message_handler(content_types=["left_chat_member"])
 async def leftuser(message: types.Message):
 	await bot.send_chat_action(message.chat.id, 'typing')
-	time.sleep(1)
 	await bot.send_message(
 		message.chat.id, '😞 Эх... минус один пользователь чата...', parse_mode='html')
 
